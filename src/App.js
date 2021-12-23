@@ -1,59 +1,113 @@
 import React from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {Button, ScrollView, Text, View} from 'react-native';
 import SvgComponent from './component/svg/svg-component';
-import Container from './component/Container.js';
-import MaskedView from '@react-native-community/masked-view';
+import Gradient from './component/gradient/Gradient.js';
+import TextFont from './component/textFont/TextFont';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import TextGradient from './component/textGradient/TextGradient';
+import {Dimensions} from 'react-native';
+
+function HomeScreen() {
+  const nav = useNavigation();
+
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Home Screen</Text>
+      <Button
+        title={'Gradient'}
+        onPress={() => {
+          nav.navigate('Gradient');
+        }}
+      />
+
+      <Button
+        title={'textGradient'}
+        onPress={() => {
+          nav.navigate('textGradient');
+        }}
+      />
+
+      <Button
+        title={'TextFont'}
+        onPress={() => {
+          nav.navigate('TextFont');
+        }}
+      />
+    </View>
+  );
+}
+
+function GradientScreen() {
+  const nav = useNavigation();
+  const width1 = Dimensions.get('window').width;
+  const height1 = Dimensions.get('window').height;
+  return (
+    <View style={{width: width1, height: height1, flex:1, justifyContent:'center'}} >
+      <Text>Gradient Screen</Text>
+      <Gradient>
+        <Text> This is Gradient! </Text>
+      </Gradient>
+
+      <Button
+        title={'Home'}
+        onPress={() => {
+          nav.navigate('Home');
+        }}
+      />
+    </View>
+  );
+}
+
+function TextGradientScreen() {
+  const nav = useNavigation();
+
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Text Gradient Screen</Text>
+
+      <TextGradient />
+
+      <Button
+        title={'Home'}
+        onPress={() => {
+          nav.navigate('Home');
+        }}
+      />
+    </View>
+  );
+}
+
+function TextFontScreen() {
+  const nav = useNavigation();
+
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Text Font Screen</Text>
+
+      <TextFont />
+
+      <Button
+        title={'Home'}
+        onPress={() => {
+          nav.navigate('Home');
+        }}
+      />
+    </View>
+  );
+}
 
 const App = () => {
+  const Stack = createNativeStackNavigator();
   return (
-
-
-    <Container style={{width:1170, height:2532}}>
-
-      <MaskedView
-        style={{ flex: 1, flexDirection: 'row', height: '100%' }}
-        maskElement={
-          <View
-            style={{
-              // Transparent background because mask is based off alpha channel.
-              backgroundColor: 'transparent',
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 40,
-                color: 'black',
-                fontWeight: 'bold'
-              }}
-            >
-              Basic Mask
-            </Text>
-          </View>
-        }
-      >
-        {/* Shows behind the mask, you can put anything here, such as an image */}
-        <View style={{ flex: 1, height: '100%', backgroundColor: '#784376' }} />
-        <View style={{ flex: 1, height: '100%', backgroundColor: '#F5DD90' }} />
-        <View style={{ flex: 1, height: '100%', backgroundColor: '#F76C5E' }} />
-        <View style={{ flex: 1, height: '100%', backgroundColor: '#e1e1e1' }} />
-      </MaskedView>
-
-
-      <ScrollView style={{flex: 1}}>
-        <Text style={{fontFamily: 'SFUIDisplay-Regular'}}>Some text</Text>
-        <View style={{flex: 1}}>
-          <Text style={{fontFamily: 'Notable-Regular'}}>Some more text</Text>
-          <Text style={{fontFamily: 'SFUIDisplay-Semibold'}}>Some more text</Text>
-        </View>
-        <SvgComponent> </SvgComponent>
-      </ScrollView>
-
-    </Container>
-
-
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Gradient" component={GradientScreen} />
+        <Stack.Screen name="textGradient" component={TextGradientScreen} />
+        <Stack.Screen name="TextFont" component={TextFontScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 export default App;

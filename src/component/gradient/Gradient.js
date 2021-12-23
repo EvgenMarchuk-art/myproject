@@ -2,9 +2,9 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { View , StyleSheet} from 'react-native';
 
-const Container = ({children}) =>{
+const Gradient = ({children}) =>{
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1 }}>
       <LinearGradient
         colors={['#4c669f', '#3b5998', '#192f6a']}
         style={styles.gradient}>
@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 15,
+
   },
 });
 
-export default Container;
+export default Gradient;
