@@ -1,21 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import Navigation from './component/react-native/navigation/react-native/Navigation';
-import User from '../src/user/User';
-import getUsers from '../src/user/User';
-
+import React from 'react';
+import {ScrollView, Text, View} from 'react-native';
+import SvgComponent from './component/svg/svg-component';
+import Container from './component/Container.js';
+import MaskedView from '@react-native-community/masked-view';
+import Navigation from '../src/component/navigation/Navigation';
+import TextGradient from './component/textGradient/TextGradient';
 
 const App = () => {
-
-
-  // const [users, setUsers] = useState();
-
-  // useEffect(() => {
-  //   getUsers().then(res => {
-  //     console.log(res);
-  //   });
-  // }, []);
-
-  return <Navigation />;
-
+  return <TextGradient />;
 };
 export default App;

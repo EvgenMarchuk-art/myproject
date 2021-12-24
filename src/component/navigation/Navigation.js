@@ -4,11 +4,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {Button, Dimensions, Text, View} from 'react-native';
 
-import Gradient from '../../../gradient/Gradient';
-import TextFont from '../../../textFont/TextFont';
-import TextGradient from '../../../textGradient/TextGradient';
+import Gradient from '../gradient/Gradient';
+import TextFont from '../textFont/TextFont';
+import TextGradient from '../textGradient/TextGradient';
 
-import SvgComponent from '../../../svg/svg-component';
+import SvgComponent from '../svg/svg-component';
 
 function HomeScreen() {
   const nav = useNavigation();
